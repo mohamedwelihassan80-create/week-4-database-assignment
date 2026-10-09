@@ -17,13 +17,14 @@ FROM customers
 GROUP BY customerName, country;
 
 
--- Question 3: Total price of products ordered
+-- Question 3: Total price of products ordered (only where total exceeds 5000)
 SELECT 
     productCode, 
     quantityOrdered, 
     SUM(quantityOrdered * priceEach) AS total_price
 FROM orderdetails
-GROUP BY productCode, quantityOrdered;
+GROUP BY productCode, quantityOrdered
+HAVING total_price > 5000;
 
 
 -- Question 4: Highest payment amount for each check number
